@@ -1,0 +1,20 @@
+
+|-- index.php
+|-- config.php
+|-- controller/
+|   |-- admin/
+|   |   |-- AdminController.php
+|   |-- client/
+|   |   |-- ClientController.php
+|-- model/
+|   |-- BaseModel.php
+|   |-- User.php
+|-- view/
+|   |-- admin/
+|   |   |-- dashboard.php
+|   |-- client/
+|   |   |-- home.php
+|-- core/
+|   |-- BaseController.php
+|   |-- BaseModel.php
+|-- .htaccess (nếu cần cho chuyển hướng URL sạch, nhưng không bắt buộc nếu không sử dụng)
