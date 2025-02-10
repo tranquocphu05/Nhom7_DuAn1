@@ -1,29 +1,76 @@
 <?php
-// index.php
-
-require_once 'config.php';
-require_once 'core/BaseController.php';
-require_once 'core/BaseModel.php';
-
-// Xử lý phân loại người dùng và yêu cầu
 session_start();
 
-$userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 'client'; // Giả sử có role trong session
+// Nhúng các file cần dùng vào
 
-if ($userRole === 'admin') {
-    $controller = 'AdminController';
-    $folder = 'admin';
-} else {
-    $controller = 'ClientController';
-    $folder = 'client';
+//Common
+
+include "common/env.php";
+include "common/function.php";
+
+// Nhứng troàn bộ các file controller
+include "controller/HomeController.php";
+include "controller/LoginController.php";
+include "admin/controller/categoryController.php";
+
+// Nhứng troàn bộ các file model
+
+
+include 'admin/model/product.php';
+include "model/productQuery.php";
+include "model/loginQuery.php";
+include "model/billQuery.php";
+include "model/order.php";
+// include "model/account.php";
+
+
+include "admin/model/category.php"; 
+include "admin/model/categoryQuery.php"; 
+include "admin/model/account.php"; 
+include "admin/model/accountQuery.php"; 
+include "admin/model/bill.php"; 
+include "admin/model/comment.php";
+include "admin/model/commentQuery.php";
+include "admin/model/news.php";
+include "admin/model/newsQuery.php";
+include "admin/model/voucher.php";
+include "admin/model/voucherQuery.php";
+
+
+// Thông tin act
+$act = $_GET['act'] ?? '' ;
+$id = $_GET['id']  ?? '';
+date_default_timezone_set('Asia/Jakarta');
+
+if(!isset($_SESSION["myCart"])) {
+  $_SESSION["myCart"] = [];
 }
 
-$controllerPath = "controller/{$folder}/{$controller}.php";
+match ($act) {
+    '' => (new HomeController())->home(),
+    'login' => (new LoginController) ->login(),
+    'logout' => (new LoginController()) ->logout(),
+    'signup' => (new LoginController()) ->signup(),
+    // 'dangky' => (new LoginController()) ->dangky(),
+    'cart' =>  (new HomeController())->cart(),
+    'ctsp'=> (new HomeController()) -> ctsp(),
+    'order' => (new HomeController()) -> order(),
+    'end_order' => (new HomeController()) -> end_order(),
+    // 'ctsp_dt' => (new HomeController()) -> ctsp_dt(),
 
-if (file_exists($controllerPath)) {
-    require_once $controllerPath;
-    $controllerInstance = new $controller();
-    $controllerInstance->index(); // Giả sử mỗi controller đều có phương thức index
-} else {
-    die("Controller không tồn tại");
+    'deleteProInCart' => (new HomeController()) -> deleteOneProInCart(),
+
+    'deleteAllCart' => (new HomeController()) -> deleteAllCart(),
+
+    'view_profile' => (new HomeController()) -> viewProfile(),
+
+    'update_profile' => (new HomeController()) -> updateProfile(),
+    
+    'searchPro' => (new HomeController()) -> searchPro(),
+
+    'showAllProOfCate'=> (new HomeController()) -> showAllProOfCate(),
+    
 }
+
+
+?>
