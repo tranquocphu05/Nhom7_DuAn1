@@ -10,11 +10,11 @@
     <script src="https://kit.fontawesome.com/6dab569175.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
-
 <body>
     <?php
         include "view/Component/header.php"
     ?>
+    <!-- End header -->
     <main>
         <div class="banner w95">
             <div class="banner_slideshow">
@@ -26,7 +26,6 @@
     <p>Giày tây là sự lựa chọn hoàn hảo cho những ai yêu thích sự thanh lịch, sang trọng và lịch lãm. Những thiết kế mới nhất trong năm 2024 hứa hẹn sẽ mang đến cho bạn sự tự tin và phong cách nổi bật, phù hợp với mọi sự kiện và môi trường làm việc.</p>
     <h3><a href="">Mua ngay</a></h3>
 </div>
-
         </div>
         <div class="category w95">
             <div class="bigcate">
@@ -94,6 +93,44 @@
                     <li><a href="">Giảm giá</a></li>
                 </ul>
             </div>
+            <div class="list_pro">
+                <?php  foreach ($dsProduct as $key=>$pro)  :?>
+                    <div class="pro_item">
+                    <div class="quick_act">
+                        <form action="">
+                            <button><i class="fa-regular fa-heart"></i></button>
+                            <button><i class="fa-solid fa-cart-shopping"></i></button>
+                            <button><i class="fa-regular fa-eye"></i></button>
+                        </form>
+                    </div>
+                    <div class="img_pro">
+                        <a href="?act=ctsp&id=<?= $pro->pro_id?>">
+                            <img src="img/product/<?= $pro->pro_image?>" alt="">
+                        </a>
+                    </div>
+                    <div class="content_pro">
+                        <div class="name_pro">
+                            <a href="?act=ctsp&id=<?= $pro->pro_id?>"><?= $pro->pro_name?></a>
+                        </div>
+                        <div class="price_pro">
+                            <p>
+                                <?php 
+                                    foreach ($Arr_price as $index => $pr_min) {
+                                        if ($key == $index) {
+                                            echo ($pr_min); ?> VND<?php
+                                        }
+                                    }
+                                ?>
+                            <span></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <?php  endforeach; ?>
+               
+          
+                <!-- End pro_item -->
+            </div>
             <a href=""><h4>xem tất cả sản phẩm</h4></a>
         </div>
         <div class="bigdeal">
@@ -111,7 +148,29 @@
             <div class="title_news">
                 tin mới nhất
             </div>
-         
+            <div class="list_news">
+                <?php foreach ($dsNews as $key => $news ) :?>
+                <div class="news_item">
+                    <div class="img_news">
+                        <a href=""><img src="img/<?= $news->news_img ?>" alt=""></a>
+                    </div>
+                    <div class="news_content">
+                        <div class="main_title">
+                            <a href="">
+                                <?= $news->news_title ?>
+                            </a>
+                        </div>
+                        <div class="date">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            17 tháng 10, 2025
+                        </div>
+                        <div class="intro">
+                            <?= $news->news_content ?>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
         </div>
         <div class="brand">
             <img src="img/brand1.png" alt="">
