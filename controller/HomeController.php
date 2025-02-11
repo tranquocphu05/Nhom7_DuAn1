@@ -203,7 +203,7 @@
         include "view/updateProfile.php";
     }
 
-    public function searchPro() {
+    public function showAllProOfCate() {
         $allSlPro = 0;
         foreach ($_SESSION["myCart"] as $key => $proCart) {
             if ($proCart['product_dt_id']) {
@@ -211,17 +211,13 @@
             }
         }
         $dsCategory = $this->categoryQuery->all();
-        if (isset($_POST['searchKeyPro'])) {
-            // echo "<Pre>";
-            // print_r($_POST);
-            $key = $_POST['searchPro'];
-            $dsPro_search = $this->productQuery->searchPro($key);
-            //  echo "<Pre>";
-            // print_r($dsPro_search);
-            include "view/searchPro.php";
-        } else {
-            include "view/home.php";
+        if (isset($_GET['cate_id'])) {
+            $dsAllProduct_same = $this->productQuery->getAllProSameCate_id($_GET['cate_id']);
+        $cate_one = $this->categoryQuery->show_one_cate($_GET['cate_id']);
+
+            include "view/showProInCate.php";
         }
+       
     }
 
         }
