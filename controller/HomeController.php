@@ -225,12 +225,7 @@
     }
 
     
-        $dsCategory = $this->categoryQuery->all();
-        if (isset($_GET['cate_id'])) {
-            $dsAllProduct_same = $this->productQuery->getAllProSameCate_id($_GET['cate_id']);
-            // echo "<Pre>";
-            // print_r($dsAllProduct_same);
-        $cate_one = $this->categoryQuery->show_one_cate($_GET['cate_id']);
+       
 
             include "view/showProInCate.php";
         }
