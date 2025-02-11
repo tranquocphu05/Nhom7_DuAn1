@@ -10,6 +10,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://kit.fontawesome.com/6dab569175.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <style>
+    .row1 {
+        width: 100%;
+        height: 50px;
+        background-color: #f3f3f3;
+        margin-top: 30px;
+        padding-left: 5%;
+    }
+
+    .row1 ul {
+        display: flex;
+    }
+
+    .row1 ul li {
+        margin-right: 20px;
+    }
+
+    .row1 ul li a {
+        line-height: 50px;
+        font-weight: 300;
+        color: #6b6969;
+    }
+
+    .row1 ul li:last-child a {
+        color: black;
+        font-weight: 400;
+    }
+    </style>
 </head>
 
 <body>
@@ -28,7 +56,7 @@
         <div class="hot_products w95">
             <div class="title"><?= $cate_one['cate_name'] ?></div>
             <div class="list_pro">
-                <?php foreach ($dsAllproduct_same as $pro) : ?>
+                <?php foreach ($dsAllProduct_same as $pro) : ?>
                 <div class="pro_item">
                     <div class="quick_act">
                         <form action="">
