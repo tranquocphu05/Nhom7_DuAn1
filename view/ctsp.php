@@ -15,6 +15,7 @@
 
 </head>
 </head>
+ 
 <body>
     <?php include "view/Component/header.php" ?>
 
@@ -110,7 +111,7 @@
                                      foreach ($dsProDetail as $pro_dt_list) {
                                         
                                         if (!in_array($pro_dt_list-> pro_color,$arayColor)) {
-                                            $arayColor[] =   $pro_dt_list-> pro_color
+                                            $arayColor[] =   $pro_dt_list-> pro_color;
                                         }
                                      }
                                     //  var_dump($arayColor);
@@ -134,7 +135,7 @@
                             <div class="box_size">
                                 <?php
                                     $araySize = [];
-                                     foreach ($dsProDetail as $pro_dtlist) {
+                                     foreach ($dsProDetail as $pro_dt_list) {
                                         
                                         if (!in_array($pro_dt_list->pro_size,$araySize)) {
                                             $araySize[] =   $pro_dt_list-> pro_size;
@@ -171,10 +172,17 @@
                                     <button type="submit" name='addToCart'>Thêm vào giỏ Hàng</button>
                                 </a>
                             </div>
+                            <div class="buy">
+                                <a href="">
+                                    <button type="submit" name='myCart'>MUA HÀNG</button>
+                                </a>
+                            </div>
                         </div>
 
                     </form>
                 </div>
+
+                <!-- ?act=cart&pro_id=<?= $pro_one->pro_id?>&pro_color=<?=$color?>&pro_size=<?=$size?> -->
 
                 <div class="icon">
                     <ul>
@@ -184,6 +192,42 @@
                         <li><a href=""><i class="fa-brands fa-tiktok"></i></a></li>
                     </ul>
                 </div>
+            </div>
+            <div class="row2_bh">
+                <div class="row2_bh_one">
+                    <h3>CHÚNG TÔI LUÔN Ở ĐÂY ĐỂ HỖ TRỢ BẠN</h3>
+                    <p>Hotline tư vấn</p>
+                    <h4>1900 6868</h4>
+                </div>
+                <div class="row2_bh_tow">
+                    <div class="row2_bh_tow_icon">
+                        <i class="fa-solid fa-truck"></i>
+                    </div>
+                    <div class="row2_bh_tow_text">
+                        <h5>Giao hàng ngay</h5>
+                        <p>Giao hàng tận nhà</p>
+                    </div>
+                </div>
+                <div class="row2_bh_tow">
+                    <div class="row2_bh_tow_icon">
+                        <i class="fa-solid fa-thumbs-up"></i>
+                    </div>
+                    <div class="row2_bh_tow_text">
+                        <h5>Bảo hành chính hãng</h5>
+                        <p>Đối mới 100% (Nếu lỗi do NSX)</p>
+                    </div>
+                </div>
+                <div class="row2_bh_tow">
+                    <div class="row2_bh_tow_icon">
+                        <i class="fa-regular fa-circle-check"></i>
+                    </div>
+                    <div class="row2_bh_tow_text">
+                        <h5>Dịch vụ tốt - nhanh</h5>
+                        <p>Sự hài lòng của quý khách </p>
+                    </div>
+                </div>
+
+
             </div>
         </div>
 
@@ -200,44 +244,7 @@
                     $("#comment").load("view/form_comment.php", { pro_id: <?= $pro_one->pro_id ?> });
             });
         </script> -->
-       
-
-        <div class="hot_products w95">
-            <div class="title">Sản phẩm liên quan</div>
-
-            <div class="list_pro">
-                <?php
-                    // var_dump($dsProduct_same);
-                    foreach ($dsProduct_same as $pro_same) : ?>
-                <div class="pro_item">
-                    <div class="quick_act">
-                        <form action="">
-                            <button><i class="fa-regular fa-heart"></i></button>
-                            <button><i class="fa-solid fa-cart-shopping"></i></button>
-                            <button><i class="fa-regular fa-eye"></i></button>
-                        </form>
-                    </div>
-                    <div class="img_pro">
-                        <a href="?act=ctsp&id=<?= $pro_same->pro_id?>"><img src="img/product/<?=$pro_same->pro_image?>"
-                                alt=""></a>
-                    </div>
-                    <div class="content_pro">
-                        <div class="name_pro">
-                            <a href="?act=ctsp&id=<?= $pro_same->pro_id?>"><?=$pro_same->pro_name?></a>
-                        </div>
-                        <div class="price_pro">
-                            <p>Liên hệ <span></span></p>
-                        </div>
-                    </div>
-                </div>
-                <?php endforeach;?>
-
-                <!-- End pro_item -->
-            </div>
-        </div>
-
-
-
+    
     </main>
 
     <!-- footer -->
