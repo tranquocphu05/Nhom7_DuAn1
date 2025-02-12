@@ -5,7 +5,14 @@
         public $productQuery;
         public $productDetailQuery;
         public $accountQuery;
+<<<<<<< HEAD
         public $newsQuery;
+=======
+        public $commentQuery;
+        public $newsQuery;
+  
+
+>>>>>>> 42190961c3bc69b2050fec0fdfdca336c8db1586
         public function __construct()
         {
             $this->productQuery = new ProductQuery();
@@ -274,7 +281,6 @@
         $dsCategory = $this->categoryQuery->all();
         include "view/profile.php";
     }
-
     public function updateProfile() {
         $allSlPro = 0;
         foreach ($_SESSION["myCart"] as $key => $proCart) {
@@ -340,7 +346,6 @@
             include "view/home.php";
         }
     }
-
     public function showAllProOfCate() {
         $allSlPro = 0;
         foreach ($_SESSION["myCart"] as $key => $proCart) {
