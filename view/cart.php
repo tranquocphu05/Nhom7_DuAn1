@@ -115,9 +115,7 @@
                         </a>
                     </tr>
                     <?php
-                  
-                    endforeach;
-                   
+                    endforeach;                  
                 }
                 ?>
                     <input type="number" value="<?=$lastIndex?>" name="lastIndex" hidden>
