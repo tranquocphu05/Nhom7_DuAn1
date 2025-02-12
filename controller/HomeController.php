@@ -72,7 +72,7 @@
         public function ctsp() {
             $dsCategory = $this->categoryQuery->all();
             $allSlPro = 0;
-            foreach ($_SESSION["mycart"] as $key => $proCart) {
+            foreach ($_SESSION["myCart"] as $key => $proCart) {
                 if ($proCart['product_dt_id']) {
                     $allSlPro++;
                 }
@@ -160,7 +160,7 @@
 
     public function updateProfile() {
         $allSlPro = 0;
-        foreach ($_SESSION["mycart"] as $key => $proCart) {
+        foreach ($_SESSION["myCart"] as $key => $proCart) {
             if ($proCart['product_dt_id']) {
                 $allSlPro++;
             }
