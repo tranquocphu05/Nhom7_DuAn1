@@ -124,8 +124,8 @@
                     <td></td>
                     <td></td>
                     <td style="font-weight: 800; font-size: 20px;">
-                        Tổng tiền : <?= $tongtien ?>
-                        <input type="text" name="tongTien" value="<?= $tongtien ?>" hidden>
+                        Tổng tiền : <?= $tongTien ?> .000đ
+                        <input type="text" name="tongTien" value="<?= $tongTien ?>" hidden>
                     </td>
                     <td></td>
                     <td class="text-center">
