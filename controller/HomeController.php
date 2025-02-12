@@ -192,15 +192,12 @@
                 } else {
                     echo "Upload image thất bại";
                 }
-                $result = $this -> accountQuery -> updateProfile($account, $email); 
                 $_SESSION['acc_name'] = $_POST["acc_name"];
             } else {
                 $result = $this -> accountQuery ->updateProfile_NoImg($account, $email); 
             }
             header("Location: ?act=view_profile");
         }
-
-        include "view/updateProfile.php";
     }
 
     public function showAllProOfCate() {
