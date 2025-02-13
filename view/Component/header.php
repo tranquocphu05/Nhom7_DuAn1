@@ -1,6 +1,6 @@
 <header>
     <div class="logo">
-        <a href="index.php"><img src="" alt=""></a>
+        <a href="index.php"><img src="img/logo_darkblue_notfull.svg" alt=""></a>
 
     </div>
     <div class="search">
@@ -16,7 +16,24 @@
             <li class="box_sub_menu">
                 <a href="">sản phẩm</a>
                 <ul class="sub_menu">
-                  
+                    <!-- <?php
+                            var_dump($dsCategory);
+                            ?> -->
+
+
+                    <?php foreach ($dsCategory as $cate) : ?>
+
+                        <?php
+                        if ($cate->cate_status == 1) {
+                        ?>
+                            <a href="?act=showAllProOfCate&cate_id=<?= $cate->cate_id ?>">
+                                <li><?= $cate->cate_name ?></li>
+                            </a>
+                        <?php
+                        }
+                        ?>
+
+                    <?php endforeach; ?>
                 </ul>
             </li>
             <li><a href="">thư viện</a></li>
