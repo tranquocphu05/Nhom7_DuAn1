@@ -37,8 +37,7 @@
                                    <?=$tb?>
                                 </p>
                                 <?php
-                            } else {
-                                
+                            } else {  
                             }
                         ?>
                 <input type="password" id="password" name="password" placeholder="Mật khẩu">

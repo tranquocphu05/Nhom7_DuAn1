@@ -19,7 +19,6 @@
     <?php
     include "view/Component/header.php"
     ?>
-    <!-- End header -->
     <main>
         <nav>
             <ul>
