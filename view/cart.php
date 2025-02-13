@@ -25,7 +25,6 @@
     main {
         margin-top: 100px;
     }
-
     .div_lg h5 {
         font-size: 16px;
     }
