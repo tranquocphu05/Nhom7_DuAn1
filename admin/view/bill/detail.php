@@ -73,46 +73,67 @@
                     </div>
                     <input type="hidden" class="form-control rounded-0" id="inputEmail4" name="bill_id"
                         value="<?=$info->bill_id?>">
-                    <div class="mt-3">
-                        <span class="form-label">Trạng thái đơn hàng</span>
-                        <div class="row ps-3 pt-2">
-                            <div class="form-check col-2">
-                                <input class="form-check-input" type="radio" value="0" name="bill_status"
-                                    <?= $info->bill_status =="0" ? "checked" : "" ?>>
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Chờ xác nhận
-                                </label>
-                            </div>
-                            <div class="form-check col-2">
-                                <input class="form-check-input" type="radio" value="1" name="bill_status"
-                                    <?= $info->bill_status =="1" ? "checked" : "" ?>>
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Đã xác nhận
-                                </label>
-                            </div>
-                            <div class="form-check col-2">
-                                <input class="form-check-input" type="radio" value="2" name="bill_status"
-                                    <?= $info->bill_status =="2" ? "checked" : "" ?>>
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Đang giao hàng
-                                </label>
-                            </div>
-                            <div class="form-check col-2">
-                                <input class="form-check-input" type="radio" value="3" name="bill_status"
-                                    <?= $info->bill_status =="3" ? "checked" : "" ?>>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Đã nhận hàng
-                                </label>
-                            </div>
-                            <div class="form-check col-2">
-                                <input class="form-check-input" type="radio" value="4" name="bill_status"
-                                    <?= $info->bill_status =="4" ? "checked" : "" ?>>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Hủy đơn
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                        <div class="mt-3">
+    <span class="form-label">Trạng thái đơn hàng</span>
+    <div class="row ps-3 pt-2">
+        <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="0" name="bill_status"
+                <?= $info->bill_status == "0" ? "checked" : "" ?>>
+            <label class="form-check-label" for="flexRadioDefault1">
+                Chờ xác nhận
+            </label>
+        </div>
+        <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="1" name="bill_status"
+                <?= $info->bill_status == "1" ? "checked" : "" ?>>
+            <label class="form-check-label" for="flexRadioDefault1">
+                Đã xác nhận
+            </label>
+        </div>
+        <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="2" name="bill_status"
+                <?= $info->bill_status == "2" ? "checked" : "" ?>>
+            <label class="form-check-label" for="flexRadioDefault1">
+                Đang giao hàng
+            </label>
+        </div>
+        <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="3" name="bill_status"
+                <?= $info->bill_status == "3" ? "checked" : "" ?>>
+            <label class="form-check-label" for="flexRadioDefault2">
+                Đã nhận hàng
+            </label>
+        </div>
+        <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="4" name="bill_status"
+                <?= $info->bill_status == "4" ? "checked" : "" ?>>
+            <label class="form-check-label" for="flexRadioDefault2">
+                Hủy đơn
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="mt-3">
+    <span class="form-label">Trạng thái thanh toán</span>
+    <div class="row ps-3 pt-2">
+        <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="1" name="payment_status"
+                <?= $info->payment_status == "1" ? "checked" : "" ?>>
+            <label class="form-check-label" for="payment_status_1">
+                Đã thanh toán
+            </label>
+        </div>
+        <div class="form-check col-2">
+            <input class="form-check-input" type="radio" value="2" name="payment_status"
+                <?= $info->payment_status == "2" ? "checked" : "" ?>>
+            <label class="form-check-label" for="payment_status_2">
+                Chưa thanh toán
+            </label>
+        </div>
+    </div>
+</div>
+
                     <div class="mt-5 d-flex justify-content-center">
                         <button type="submit" class="btn btn-success" name='submitFormUpdateBillStatus'>Cập
                             nhật</button>

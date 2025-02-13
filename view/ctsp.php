@@ -15,7 +15,47 @@
 
 </head>
 </head>
- 
+ <style>
+    .box_color label,
+.box_size label {
+    transition: background-color 0.3s, border-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+.box_color label:hover,
+.box_size label:hover {
+    background-color: #f0f0f0; /* Màu nền khi di chuột qua */
+}
+
+.box_color input:checked + label,
+.box_size input:checked + label {
+    border-color: #007BFF; /* Màu viền khi được chọn */
+    background-color: #e7f1ff; /* Màu nền khi được chọn */
+    color: #007BFF; /* Màu chữ khi được chọn */
+}
+
+.row2_img {
+    width: 95%; /* Fixed width */
+    height: 90%; /* Fixed height */
+    position: relative;
+    overflow: hidden; /* Prevents image overflow outside the square container */
+}
+
+.row2_img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+    transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
+}
+
+.row2_img img:hover {
+    transform: scale(1.1); /* Light zoom (10% increase) */
+}
+
+
+ </style>
 <body>
     <?php include "view/Component/header.php" ?>
 
@@ -163,18 +203,14 @@
                             </div>
                         </div>
                         <div class="contact">
-                            <!-- <div class="phone">
+                            <div class="phone">
                                 <i class="fa-solid fa-phone"></i>
                                 1900 6868
-                            </div> -->
-                            <div class="buy">
-                                <a href="">
-                                    <button type="submit" name='addToCart'>Thêm vào giỏ Hàng</button>
-                                </a>
                             </div>
+
                             <div class="buy">
                                 <a href="">
-                                    <button type="submit" name='myCart'>MUA HÀNG</button>
+                                    <button type="submit" name='addToCart'>MUA HÀNG</button>
                                 </a>
                             </div>
                         </div>
@@ -193,6 +229,7 @@
                     </ul>
                 </div>
             </div>
+
             <div class="row2_bh">
                 <div class="row2_bh_one">
                     <h3>CHÚNG TÔI LUÔN Ở ĐÂY ĐỂ HỖ TRỢ BẠN</h3>
@@ -244,7 +281,49 @@
                     $("#comment").load("view/form_comment.php", { pro_id: <?= $pro_one->pro_id ?> });
             });
         </script> -->
-    
+        <div class="row4">
+            <h3>Bình luận</h3>
+            <div class="pro_description" id="comment">
+                <?php include "view/form_comment.php"; ?>
+            </div>
+        </div>
+
+        <div class="hot_products w95">
+            <div class="title">Sản phẩm liên quan</div>
+
+            <div class="list_pro">
+                <?php
+                    // var_dump($dsProduct_same);
+                    foreach ($dsProduct_same as $pro_same) : ?>
+                <div class="pro_item">
+                    <div class="quick_act">
+                        <form action="">
+                            <button><i class="fa-regular fa-heart"></i></button>
+                            <button><i class="fa-solid fa-cart-shopping"></i></button>
+                            <button><i class="fa-regular fa-eye"></i></button>
+                        </form>
+                    </div>
+                    <div class="img_pro">
+                        <a href="?act=ctsp&id=<?= $pro_same->pro_id?>"><img src="img/product/<?=$pro_same->pro_image?>"
+                                alt=""></a>
+                    </div>
+                    <div class="content_pro">
+                        <div class="name_pro">
+                            <a href="?act=ctsp&id=<?= $pro_same->pro_id?>"><?=$pro_same->pro_name?></a>
+                        </div>
+                        <div class="price_pro">
+                            <p>Liên hệ <span></span></p>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach;?>
+
+                <!-- End pro_item -->
+            </div>
+        </div>
+
+
+
     </main>
 
     <!-- footer -->
@@ -252,6 +331,43 @@
     <?php
         include "view/Component/footer.php"
     ?>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const labels = document.querySelectorAll('.color + label');
+
+        labels.forEach(function(label) {
+            label.addEventListener('click', function() {
+                const selectedColor = this.getAttribute('for');
+                labels.forEach(function(label) {
+                    if (label.getAttribute('for') === selectedColor) {
+                        label.style.border = '3px solid #141F46';
+                    } else {
+                        label.style.border = '1px solid #141F46';
+                    }
+                });
+            });
+        });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const labels = document.querySelectorAll('.size + label');
+
+        labels.forEach(function(label) {
+            label.addEventListener('click', function() {
+                const selectedSize = this.getAttribute('for');
+                labels.forEach(function(label) {
+                    if (label.getAttribute('for') === selectedSize) {
+                        label.style.border = '3px solid #141F46';
+                    } else {
+                        label.style.border = '1px solid #141F46';
+                    }
+                });
+            });
+        });
+    });
+    </script>
 </body>
 
 </html>

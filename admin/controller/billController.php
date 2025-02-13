@@ -30,6 +30,7 @@ class BillController {
             $bill = new Bill();
             $bill->bill_id = ($_POST['bill_id']);
             $bill->bill_status = trim($_POST['bill_status']);
+            $bill->payment_status = trim($_POST['payment_statu']);
             $result = $this->billQuery->updateBillStatus($bill);
             if ($result == "ok") {
                 header("Location: ?act=list-bill");
