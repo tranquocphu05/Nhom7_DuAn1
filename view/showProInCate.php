@@ -44,6 +44,7 @@
     <?php
     include "view/Component/header.php"
     ?>
+    <!-- End header -->
     <div class="row1">
         <ul>
             <li><a href="index.php">Trang chủ</a></li>

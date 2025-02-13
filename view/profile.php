@@ -19,6 +19,7 @@
     <?php
     include "view/Component/header.php"
     ?>
+    <!-- End header -->
     <main>
         <nav>
             <ul>
@@ -63,6 +64,39 @@
                 </a>
             </form>
 
+            <div class="inf_Order">
+                <h2 style="text-align:center;padding-bottom:10px">Lịch sử đơn hàng của bạn</h2>
+                <div class="all_pro_order">
+
+                    <?php foreach ($dsOrder as $order) : ?>
+                    <div class="one_pro_order">
+                        <div class="Oder_img">
+                            <img src="img/product/<?= $order->pro_image ?>" alt="">
+                        </div>
+                        <div class="Oder_inf">
+                            <h5><?= $order->pro_name ?> : <?= $order->pro_color ?>, <?= $order->pro_size ?></h5>
+                            <h5>Số lượng: <?= $order->quantity ?></h5>
+                            <h5>Tổng tiền: <span style="color: #DC3544;"><?= $order->total ?></span></h5>
+                            <h5> <span style="color: #6482AD; font-style:italic"><?= $order->date_order ?></span></h5>
+
+                        </div>
+                        <div class="h5">
+                            <?php if ($order->bill_status == 0) { ?>
+                            <h5 class="color0">Chờ xác nhận</h5>
+                            <?php } else if ($order->bill_status == 1) { ?> 
+                            <h5 class="color1"> Đơn hàng đã được xác nhận </h5>
+                            <?php } else if ($order->bill_status == 2) { ?> 
+                            <h5 class="color2">Đang giao hàng</h5> 
+                            <?php } else if ($order->bill_status == 3) { ?> 
+                            <h5 class="color3">Giao hàng thành công</h5> 
+                            <?php } else if ($order->bill_status == 4) { ?> 
+                            <h5 class="color4">Đã hủy đơn</h5> <?php } ?>
+                        </div>
+                    </div>
+                    <hr>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
 
     </main>

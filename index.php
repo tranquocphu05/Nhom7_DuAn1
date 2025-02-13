@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+// Nhúng các file cần dùng vào
+
+//Common
+
 include "common/env.php";
 include "common/function.php";
 
@@ -8,6 +12,8 @@ include "common/function.php";
 include "controller/HomeController.php";
 include "controller/LoginController.php";
 include "admin/controller/categoryController.php";
+
+// Nhứng troàn bộ các file model
 
 
 include 'admin/model/product.php';

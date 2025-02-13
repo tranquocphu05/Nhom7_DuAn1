@@ -27,8 +27,9 @@
         <div class="form-container">
             <span class="close-btn">×</span>
             <h2>Đăng Nhập</h2>
-            <hr>
             
+            <hr>
+            <h6>Hoặc tài khoản</h6>
             <form action="" method="post" class="main-form">
                 <input type="text" id="username" name="email" placeholder="Email">
                 <?php
@@ -37,7 +38,8 @@
                                    <?=$tb?>
                                 </p>
                                 <?php
-                            } else {  
+                            } else {
+                                
                             }
                         ?>
                 <input type="password" id="password" name="password" placeholder="Mật khẩu">

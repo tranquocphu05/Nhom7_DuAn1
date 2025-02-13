@@ -53,6 +53,9 @@
                     </div>
                 </div>
                 <?php  endforeach; ?>
+               
+          
+                <!-- End pro_item -->
             </div>
             <a href=""><h4>xem tất cả sản phẩm</h4></a>
         </div>

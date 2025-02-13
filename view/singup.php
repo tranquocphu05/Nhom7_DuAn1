@@ -77,6 +77,12 @@
     ?>
 
     <script src="scripts.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Tìm <li> có sub
+            $('.sub_menu').parent('li').addClass('has_child');
+        })
+    </script>
 
 
 

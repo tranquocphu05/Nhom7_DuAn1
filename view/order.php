@@ -57,7 +57,7 @@
                                  if ($voucher -> voucher_id !== 3 ) {  ?>
                                     <div class="value">
                                     <input type="radio" id="voucher" value="<?= $voucher->value?>" name="voucher" onchange="updateTotalBill(<?= $voucher->value?>)">
-                                    <label for=""><?=$voucher->vouchername?></label>
+                                    <label for=""><?=$voucher->voucher_name?></label>
                                     </div>
                               <?php   }  
                              }

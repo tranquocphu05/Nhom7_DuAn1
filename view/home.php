@@ -10,6 +10,7 @@
     <script src="https://kit.fontawesome.com/6dab569175.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
+
 <body>
     <?php
         include "view/Component/header.php"
@@ -162,7 +163,7 @@
                         </div>
                         <div class="date">
                             <i class="fa-solid fa-calendar-days"></i>
-                            17 tháng 10, 2025
+                            01 tháng 06, 2024
                         </div>
                         <div class="intro">
                             <?= $news->news_content ?>

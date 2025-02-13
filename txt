@@ -1,0 +1,6 @@
+  <div class="banner_content">
+    <h3 class=""><span></span>Giày Tây 2024</h3>
+    <h1>Phong cách & Đẳng cấp</h1>
+    <p>Giày tây là sự lựa chọn hoàn hảo cho những ai yêu thích sự thanh lịch, sang trọng và lịch lãm. Những thiết kế mới nhất trong năm 2024 hứa hẹn sẽ mang đến cho bạn sự tự tin và phong cách nổi bật, phù hợp với mọi sự kiện và môi trường làm việc.</p>
+    <h3><a href="">Mua ngay</a></h3>
+</div>
