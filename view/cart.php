@@ -12,23 +12,72 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://kit.fontawesome.com/6dab569175.js" crossorigin="anonymous"></script>
+
+    <style>
+    header {
+        width: 100%;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    main {
+        margin-top: 100px;
+    }
+
+    .div_lg h5 {
+        font-size: 16px;
+    }
+
+    #admin {
+        position: absolute;
+        top: -16px;
+        left: 74px;
+        width: 50px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+        color: #ffffff;
+        background-color: #141F46;
+        font-size: 16px;
+    }
+
+    #acc_name {
+        position: absolute;
+        top: -26px;
+        left: -31px;
+        width: 150px;
+        color: #141F46;
+        font-size: 16px;
+    }
+
+    .div_lg1 h5 {
+        font-size: 16px;
+    }
+    </style>
 </head>
 
 <body>
     <?php
     include "view/component/header.php";
     ?>
+    <!-- END HEADER -->
+    <!-- CONTENT -->
 
     <div class="banner w95">
         <div class="banner_slideshow">
             <img src="img/banner.jpg" alt="">
         </div>
         <div class="banner_content">
-    <h3 class=""><span></span>Giày Tây 2024</h3>
-    <h1>Phong cách & Đẳng cấp</h1>
-    <p>Giày tây là sự lựa chọn hoàn hảo cho những ai yêu thích sự thanh lịch, sang trọng và lịch lãm. Những thiết kế mới nhất trong năm 2024 hứa hẹn sẽ mang đến cho bạn sự tự tin và phong cách nổi bật, phù hợp với mọi sự kiện và môi trường làm việc.</p>
-    <h3><a href="">Mua ngay</a></h3>
-</div>
+            <h3><span></span>Xu hướng 2024</h3>
+            <h1>thiết kế nội thất</h1>
+            <p>Xu hướng thiết kế nội thất Bắc Âu được giới trẻ ưu ái sử dụng
+                trong những năm gần nhờ vào trào lưu sống xanh, bền vững và
+                yêu môi trường với chi phí phù hợp
+            </p>
+            <h3><a href="">mua ngay</a></h3>
+        </div>
     </div>
     <!-- Main content -->
     <main class="container">
@@ -38,7 +87,7 @@
         <div class="d-flex justify-content-between mb-3" style="float:right;">
             <div>
                 <a onclick="return confirm('Xác nhận xóa toàn bộ sản phẩm trong giỏ hàng?')" 
-                    href="index.php?act=deleteAllcart">
+                    href="index.php?act=deleteAllCart">
                     <button class="btn btn-danger"><i class="fa-solid fa-trash"></i> Xóa giỏ hàng </button>
                 </a>
             </div>
@@ -58,14 +107,14 @@
                 <?php
 
                 if (isset($_SESSION['myCart'])) {
-                    $index = 0; 
+                    $index = 0; // Biến chỉ số sản phẩm
 
                     foreach ($_SESSION['myCart'] as $pro) : ?>
                     <tr>
                         <th scope="row" style="width: 50%;">
                             <input type="checkbox" class="me-2">
                             <img src="img/product/<?= $pro['pro_img'] ?>" width="10%" alt="">
-                            <input type="text" name="imgInCart<?= $index ?>" value="img/product/ <?= $pro['pro_img'] ?>"
+                            <input type="text" name="imgInCart<?= $index ?>" value="img/product/<?= $pro['pro_img'] ?>"
                                 hidden>
                             <input type="text" name="product_dt_id<?= $index ?>" value="<?= $pro['product_dt_id'] ?>"
                                 hidden>
@@ -93,7 +142,7 @@
                                         <a class="page-link text-success" href="#">
                                             <?= $pro['soluong'] ?>
                                             <input type="number" value="<?= $pro['soluong'] ?>"
-                                                name="soluongincart<?= $index ?>" hidden>
+                                                name="soluongIncart<?= $index ?>" hidden>
                                         </a>
                                     </li>
                                     <!-- <li class="page-item">
@@ -115,15 +164,20 @@
                         </a>
                     </tr>
                     <?php
-                    endforeach;                  
+                    $index++; // Tăng chỉ số sản phẩm
+                    endforeach;
+                    $lastIndex = $index-1;
+                   
                 }
                 ?>
                     <input type="number" value="<?=$lastIndex?>" name="lastIndex" hidden>
+                    <!-- Các trường dữ liệu tổng tiền -->
+
                     <td></td>
                     <td></td>
                     <td style="font-weight: 800; font-size: 20px;">
-                        Tổng tiền : <?= $tongTien ?> .000đ
-                        <input type="text" name="tongTien" value="<?= $tongTien ?>" hidden>
+                        Tổng tiền : <?= $tongTien ?>.000
+                        <input type="text" name="tongTien" value="<?= $tongTien ?>.000" hidden>
                     </td>
                     <td></td>
                     <td class="text-center">
@@ -143,7 +197,18 @@
     <?php
     include "view/component/footer.php";
     ?>
-
+    <!-- END FOOTER -->
+    <script>
+    // Lắng nghe sự kiện click trên các nút "Xóa"
+    var deleteLinks = document.querySelectorAll('.delete-link');
+    deleteLinks.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Ngăn chặn chuyển hướng trang mặc định
+            var url = this.dataset.url;
+            window.location.href = url; // Chuyển hướng trang đến đường dẫn trong thuộc tính data-url
+        });
+    });
+</script>
 </body>
 
 </html>
