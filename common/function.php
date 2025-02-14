@@ -124,6 +124,7 @@
         $order -> quantity = $row['quantity'];
         $order -> total = $row['total'];
         $order -> bill_status = $row['bill_status'];
+        $order -> payment_status = $row['payment_status'];
         $order -> date_order = $row['date_order'];
         return $order;
     }

@@ -47,32 +47,36 @@
         
 
         public function showBillOfAcc($acc_id)
-        {
-            try {
-                $sql = "SELECT bill.bill_status, bill_detail.pro_name, product_detail.pro_size, product_detail.pro_color, bill_detail.quantity, bill_detail.total, product.pro_image,bill.date_order
-                        FROM bill
-                        INNER JOIN bill_detail ON bill.bill_id = bill_detail.bill_id 
-                        INNER JOIN product_detail ON bill_detail.pro_dt_id = product_detail.product_dt_id
-                        INNER JOIN product ON product_detail.pro_id = product.pro_id 
-                        WHERE bill.acc_id = $acc_id 
-                        ORDER BY bill.date_order DESC";
-                $data = $this->pdo->query($sql)->fetchAll();
-                $dsOrder = [];
-                if ( $data === false) {
-                    return "Lỗi";
-                } else {
-                    foreach ($data as $row) {
-                        $dsOrder[] = convertToObjectOrder($row);
-                    }
-                   
-                    return $dsOrder;
-                }
+{
+    try {
+        $sql = "SELECT bill.bill_status, bill.payment_status, bill_detail.pro_name, product_detail.pro_size, 
+                       product_detail.pro_color, bill_detail.quantity, bill_detail.total, product.pro_image, bill.date_order
+                FROM bill
+                INNER JOIN bill_detail ON bill.bill_id = bill_detail.bill_id 
+                INNER JOIN product_detail ON bill_detail.pro_dt_id = product_detail.product_dt_id
+                INNER JOIN product ON product_detail.pro_id = product.pro_id 
+                WHERE bill.acc_id = $acc_id 
+                ORDER BY bill.date_order DESC";
                 
-            } catch (Exception $e) {
-                echo "Lỗi" . $e->getMessage();
-                echo "<hr>";
+        $data = $this->pdo->query($sql)->fetchAll();
+        $dsOrder = [];
+        
+        if ($data === false) {
+            return "Lỗi";
+        } else {
+            foreach ($data as $row) {
+                $dsOrder[] = convertToObjectOrder($row);
             }
+
+            return $dsOrder;
         }
+
+    } catch (Exception $e) {
+        echo "Lỗi: " . $e->getMessage();
+        echo "<hr>";
+    }
+}
+
     }
 
     class BillDetailQuery

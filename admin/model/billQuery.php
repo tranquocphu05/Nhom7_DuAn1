@@ -42,7 +42,38 @@ class BillQuery {
             echo "<hr>";
         }
     }
-
+    public function updatePaymentStatus($bill_id, $payment_status) {
+        try {
+            // Cập nhật payment_status của đơn hàng theo bill_id
+            $sql = "UPDATE bill 
+                    SET payment_status = :payment_status
+                    WHERE bill_id = :bill_id";
+    
+            $stmt = $this->pdo->prepare($sql);
+    
+            // Gán giá trị cho tham số trong câu lệnh SQL
+            $stmt->bindParam(':payment_status', $payment_status, PDO::PARAM_INT);  // Giới thiệu kiểu dữ liệu là INT
+            $stmt->bindParam(':bill_id', $bill_id, PDO::PARAM_INT);  // Gán giá trị bill_id
+    
+            // Thực thi câu lệnh SQL
+            $stmt->execute();
+    
+            // Kiểm tra kết quả của câu lệnh
+            if ($stmt->rowCount() > 0) {
+                return "Cập nhật trạng thái thanh toán thành công!";
+            } else {
+                return "Không có thay đổi nào được thực hiện.";
+            }
+    
+        } catch (Exception $e) {
+            echo "Lỗi: " . $e->getMessage();
+            echo "<hr>";
+        }
+    }
+    
+    
+    
+    
     public function updateBillStatus(Bill $bill) {
         try {
             $sql = "UPDATE `bill` SET `bill_status`='$bill->bill_status' WHERE `bill_id`='$bill->bill_id' ";
