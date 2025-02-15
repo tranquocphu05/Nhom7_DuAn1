@@ -10,7 +10,7 @@
         public $commentQuery;
         public $newsQuery;
         public $voucherQuery;
-        public $TinTuc;
+        public $gioithieu;
         public function __construct()
         {
             $this->productQuery = new ProductQuery();
@@ -22,6 +22,7 @@
             $this -> commentQuery= new CommentQuery();
             $this -> newsQuery= new NewsQuery();
             $this -> voucherQuery = new VoucherQuery();
+            // $this -> gioithieu = new gioithieu();
    
         }
 
@@ -623,7 +624,5 @@
         }
        
     }
-
-
 }
 ?>

@@ -53,16 +53,11 @@
 .row2_img img:hover {
     transform: scale(1.1); /* Light zoom (10% increase) */
 }
-
-
  </style>
 <body>
     <?php include "view/Component/header.php" ?>
-
     <!-- End header -->
-
     <!-- Begin main  -->
-
     <div class="row1">
         <ul>
             <li><a href="index.php">Trang chủ</a></li>
@@ -98,11 +93,9 @@
 
             <div class="pro_inf">
                 <h4><?= $pro_one->pro_name?></h4>
-
                 <!-- <h5 style="color: black; font-size: 20px;">
                     Giá: <span style="color: red;"><?=$price ?></span>
                 </h5> -->
-
                 <?php
                     if ($price < $price_max) { ?>
                         <h5><?=$price ?> - 
@@ -290,7 +283,6 @@
 
         <div class="hot_products w95">
             <div class="title">Sản phẩm liên quan</div>
-
             <div class="list_pro">
                 <?php
                     // var_dump($dsProduct_same);
