@@ -58,7 +58,6 @@ match ($act) {
     'order' => (new HomeController()) -> order(),
     'end_order' => (new HomeController()) -> end_order(),
     // 'ctsp_dt' => (new HomeController()) -> ctsp_dt(),
-
     'deleteProInCart' => (new HomeController()) -> deleteOneProInCart(),
 
     'deleteAllCart' => (new HomeController()) -> deleteAllCart(),
@@ -70,7 +69,6 @@ match ($act) {
     'searchPro' => (new HomeController()) -> searchPro(),
 
     'showAllProOfCate'=> (new HomeController()) -> showAllProOfCate(),
-    
 }
 
 

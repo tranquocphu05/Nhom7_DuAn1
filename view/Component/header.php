@@ -37,7 +37,6 @@
                 </ul>
             </li>
             <li><a href="">thư viện</a></li>
-            <li><a href="">tin tức</a></li>
             <li><a href="">liên hệ</a></li>
         </ul>
     </div>

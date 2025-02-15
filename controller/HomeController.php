@@ -10,7 +10,7 @@
         public $commentQuery;
         public $newsQuery;
         public $voucherQuery;
-
+        public $TinTuc;
         public function __construct()
         {
             $this->productQuery = new ProductQuery();
@@ -22,6 +22,7 @@
             $this -> commentQuery= new CommentQuery();
             $this -> newsQuery= new NewsQuery();
             $this -> voucherQuery = new VoucherQuery();
+   
         }
 
         public function __destruct()
@@ -64,8 +65,7 @@
         
             // Tiếp tục các phần mã khác
             $dsCategory = $this->categoryQuery->all();
-            $dsNews = $this->newsQuery->latestNews();
-        
+            $dsNews = $this->newsQuery->latestNews();        
             include "view/home.php";
         }
         
