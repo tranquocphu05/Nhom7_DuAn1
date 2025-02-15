@@ -52,7 +52,7 @@
 
                     if ($_SESSION['acc_status'] == 1 ) {
                         if ( $_SESSION['acc_role'] == 1) {
-                            header('Location: /duan1_mmlshop/admin/');
+                            header('Location: /nhom7_duan1/admin/');
                         } else {
                             header('Location: ?act=').'';
                         }
