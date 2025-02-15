@@ -5,10 +5,10 @@
             <!-- Left -->
             <div class="d-flex justify-content-between align-items-center">
                 <div class="pe-3">
-                    <i class="fa-solid fa-phone"></i> +8412345678
+                    <i class="fa-solid fa-phone"></i> +84941602005
                 </div>
                 <div>
-                    <i class="fa-solid fa-envelope"></i> mml_shop@gmail.com
+                    <i class="fa-solid fa-envelope"></i> tranphu16172005@gmail.com
                 </div>
             </div>
             <div class="d-flex justify-content-end align-items-center">
@@ -21,7 +21,7 @@
         <div class="d-flex justify-content-between align-items-center bg-white rounded-pill mb-2">
             <div class="d-flex align-items-center justify-content-center p-2 ms-2">
                 <img src="../img/logo.png" class="pe-2" alt="">
-                <h3>MML SHOP</h3>
+                <h3>Shop Store</h3>
             </div>
             <!-- MENU -->
             <nav class="navbar navbar-expand-lg">
