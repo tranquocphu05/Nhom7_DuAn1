@@ -199,6 +199,7 @@
                 ];
 
                 if (isset($_SESSION["myCart"])) {
+                    
                     $proInCart = "" ;
                     foreach ($_SESSION["myCart"] as $key => $proCart) {
                         if ($array_pro['product_dt_id'] == $proCart['product_dt_id']) {

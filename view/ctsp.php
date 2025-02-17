@@ -203,7 +203,7 @@
 
                             <div class="buy">
                                 <a href="">
-                                    <button type="submit" name='addToCart'>MUA HÀNG</button>
+                                    <button type="submit" name='addToCart'>Thêm Sản Phẩm Vào Giỏ Hàng</button>
                                 </a>
                             </div>
                         </div>
