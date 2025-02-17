@@ -108,40 +108,9 @@ h3 {
                     <?php } ?>
                 </tbody>
             </table>
-
-            <h3 class="text-center mt-5">Biểu đồ</h3>
             <div id="piechart"></div>
         </div>
-        <div class="bieudo2 pt-4 ms-4 me-4">
-            <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Tên sản phẩm</th>
-                        <th scope="col">Số lượng bán được</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $i = 1;
-                    foreach ($dsSold_M7 as $tk) { ?>
-                        <tr>
-                            <td><?= $i++; ?></td>
-                            <td>
-                                <div class="text-truncate" style="width: 100px;">
-                                    <?= $tk->pro_name ?>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="text-truncate" style="width: 100px;">
-                                    <?= $tk->total_pro_bill ?>
-                                </div>
-                            </td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div>
+      
 
         <!-- End main content -->
     </main>
