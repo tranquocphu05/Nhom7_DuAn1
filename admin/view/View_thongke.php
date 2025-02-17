@@ -1,4 +1,22 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách tin tức</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/be9ed8669f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../giaodien/style.css">
+    <style>
+        /* Đảm bảo phần tử chứa biểu đồ có kích thước chiều rộng cố định */
+        #columnchart {
+            width: 1110px;  /* Chiều rộng của biểu đồ là 870px */
+            height: 600px; /* Chiều cao có thể thay đổi theo nhu cầu */
+            margin: auto;  /* Để căn giữa biểu đồ */
+        }
+        
     /* style.css */
 
 /* General Styles */
@@ -54,18 +72,7 @@ h3 {
     }
 }
 
-</style>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách tin tức</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/be9ed8669f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../giaodien/style.css">
+    </style>
 </head>
 
 <body>
@@ -79,38 +86,8 @@ h3 {
 
         <!-- Main content -->
         <div class="bieudo1 pt-4 ms-4 me-4">
-            <h3 style="height: 70px;">Thông kê sản phẩm theo danh mục</h3>
-            <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Tên danh mục</th>
-                        <th scope="col">Số lượng tổng kho</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $i = 1;
-                    foreach ($dsthongKe as $tk) { ?>
-                        <tr>
-                            <td scope="row"><?= $i++; ?></td>
-                            <td>
-                                <div class="text-truncate" style="width: 100px;">
-                                    <?= $tk->cate_name ?>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="text-truncate" style="width: 100px;">
-                                    <?= $tk->total_quantity ?>
-                                </div>
-                            </td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-            <div id="piechart"></div>
+            <div id="columnchart"></div>
         </div>
-      
 
         <!-- End main content -->
     </main>
@@ -127,19 +104,32 @@ h3 {
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
+            var rawData = [
+                <?php
+                foreach ($dsthongKe as $tk) {
+                    // Xử lý NULL thành 0 và đảm bảo dữ liệu đúng format
+                    $quantity = $tk->total_quantity ?? 0;
+                    echo "['" . addslashes($tk->cate_name) . "', $quantity],";
+                }
+                ?>
+            ];
+
+            console.log(rawData);  // Kiểm tra dữ liệu
+
             var data = google.visualization.arrayToDataTable([
                 ['Tên danh mục', 'Số lượng sản phẩm'],
-                <?php foreach ($dsthongKe as $tk) : ?>['<?= $tk->cate_name ?>', <?= $tk->total_quantity ?>],
-                <?php endforeach; ?>
+                ...rawData
             ]);
 
             var options = {
                 'title': 'Thống kê sản phẩm theo danh mục',
-                'width': 550,
-                'height': 400
+                'width': 1110, // Chiều rộng của biểu đồ là 870px
+                'height': 600,  // Chiều cao của biểu đồ
+                'legend': { position: 'none' },  // Tắt legend nếu không cần thiết
+                'chartArea': { width: '80%' },  // Tăng kích thước vùng vẽ
             };
 
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            var chart = new google.visualization.ColumnChart(document.getElementById('columnchart'));
             chart.draw(data, options);
         }
     </script>
