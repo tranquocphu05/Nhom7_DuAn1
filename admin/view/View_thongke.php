@@ -112,9 +112,7 @@ h3 {
             <h3 class="text-center mt-5">Biểu đồ</h3>
             <div id="piechart"></div>
         </div>
-
         <div class="bieudo2 pt-4 ms-4 me-4">
-    
             <table class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
