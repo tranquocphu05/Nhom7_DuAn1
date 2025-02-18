@@ -115,23 +115,7 @@
                     </div>
 
                     <div class="mt-3">
-    <span class="form-label">Trạng thái thanh toán</span>
-    <div class="row ps-3 pt-2">
-        <div class="form-check col-2">
-            <input class="form-check-input" type="radio" value="1" name="payment_status"
-                <?= $info->payment_status == "0" ? "checked" : "" ?>>
-            <label class="form-check-label" for="payment_status_1">
-                Đã thanh toán
-            </label>
-        </div>
-        <div class="form-check col-2">
-            <input class="form-check-input" type="radio" value="0" name="payment_status"
-                <?= $info->payment_status == "1" ? "checked" : "" ?>>
-            <label class="form-check-label" for="payment_status_0">
-                Chưa thanh toán
-            </label>
-        </div>
-    </div>
+    
 </div>
 
 

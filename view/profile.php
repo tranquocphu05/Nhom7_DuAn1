@@ -92,14 +92,6 @@
                             <?php } else if ($order->bill_status == 4) { ?> 
                             <h5 class="color4">Đã hủy đơn</h5> <?php } ?>
                         </div>
-                        <div class="h5">
-    <?php if ($order->payment_status == 1) { ?>
-        <h5 class="color0">Chưa thanh toán</h5>
-    <?php } else if ($order->payment_status == 0) { ?> 
-        <h5 class="color1">Đã thanh toán</h5>
-    <?php } ?>
-</div>
-
                     </div>
                     <hr>
                     <?php endforeach; ?>
