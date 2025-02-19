@@ -87,6 +87,9 @@ h3 {
         <!-- Main content -->
         <div class="bieudo1 pt-4 ms-4 me-4">
             <div id="columnchart"></div>
+            <div>
+                <h3>số lượng đặt hàng của từng acc</h3>
+            </div>
         </div>
 
         <!-- End main content -->
