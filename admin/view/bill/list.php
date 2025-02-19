@@ -67,7 +67,6 @@
                             <th scope="col">Ngày tạo đơn</th>
                             <th scope="col">Tổng tiền</th>
                             <th scope="col">Trạng thái đơn hàng</th>
-                            <th scope="col">Trạng thái thanh toán</th>
                             <th scope="col">Hành động</th>
                         </tr>
                     </thead>
