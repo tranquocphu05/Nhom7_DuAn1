@@ -138,23 +138,6 @@
                                 ?>
                             </td>
                             <td scope="row">
-                                <?php
-                                    if ($bill->payment_status == 1) {
-                                ?>
-                                <span class="badge bg-danger">Chưa thanh toán</span>
-                                <?php
-                                    } else if ($bill->payment_status == 0) {
-                                ?>
-                                <span class="badge bg-success">Đã thanh toán</span>
-                                <?php
-                                    } else {
-                                ?>
-                                <span class="badge" style="background: black;">Lỗi</span>
-                                <?php
-                                    }
-                                ?>
-                            </td>
-                            <td scope="row">
                                 <button class="btn" style="background: #141F46;">
                                     <a href="index.php?act=view-bill-detail&bill_id=<?= $bill->bill_id ?>"
                                         class="text-white">
