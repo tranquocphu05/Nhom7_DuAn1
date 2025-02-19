@@ -48,7 +48,7 @@
                             <a href="?act=ctsp&id=<?= $pro->pro_id?>"><?= $pro->pro_name?></a>
                         </div>
                         <div class="price_pro">
-                            <p>Liên hệ <span></span></p>
+                            <!-- <p><?= $pro->pro_price ?><span></span></p> -->
                         </div>
                     </div>
                 </div>
