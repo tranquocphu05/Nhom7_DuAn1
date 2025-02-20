@@ -138,117 +138,130 @@
             include "view/ctsp.php";
         }
 
-    public function cart() {
-        $dsCategory = $this->categoryQuery->all();
+        public function cart() {
+            $dsCategory = $this->categoryQuery->all();
+            
+            // Khôi phục giỏ hàng từ cookie nếu có
+            if (isset($_COOKIE["myCart"])) {
+                $_SESSION["myCart"] = json_decode($_COOKIE["myCart"], true);
+            }
+        
+            // Kiểm tra nếu người dùng thêm sản phẩm vào giỏ
             if (isset($_POST['addToCart'])) {
-                // echo "<Pre>";
-                // print_r($_POST);
                 $pro_size = $_POST['pro_size'];
                 $pro_color = $_POST['pro_color'];
                 $pro_id = $_POST['pro_id'];
-                $soluong = $_POST['soluong']; 
+                $soluong = $_POST['soluong'];
+        
+                // Kiểm tra tính hợp lệ của thông tin
                 if (!$pro_color && !$pro_size) {
                     ?>
-                        <script>
-                            alert("Vui lòng chọn màu sắc và kích cỡ");
-                            window.location.href = "?act=ctsp&id=<?=$pro_id?>";
-                        </script>
+                    <script>
+                        alert("Vui lòng chọn màu sắc và kích cỡ");
+                        window.location.href = "?act=ctsp&id=<?=$pro_id?>";
+                    </script>
                     <?php
-                     return;
+                    return;
                 }
                 if (!$pro_size) {
                     ?>
-                        <script>
-                            alert("Vui lòng chọn kích cỡ");
-                            window.location.href = "?act=ctsp&id=<?=$pro_id?>";
-                        </script>
+                    <script>
+                        alert("Vui lòng chọn kích cỡ");
+                        window.location.href = "?act=ctsp&id=<?=$pro_id?>";
+                    </script>
                     <?php
                     return;
-                } 
+                }
                 if (!$pro_color) {
                     ?>
-                        <script>
-                            alert("Vui lòng chọn màu sắc");
-                            window.location.href = "?act=ctsp&id=<?=$pro_id?>";
-                        </script>
-                    <?php
-                     return;
-                } 
-                $pro_detail_one = $this->productDetailQuery->infoOneProductDetail_color_size_proID($pro_id,$pro_size,$pro_color);
-                if ($pro_detail_one->pro_quantity <= $soluong) {
-                    ?>
-                        <script>
-                            alert("Quá số lượng hàng còn trong kho");
-                            window.location.href = "?act=ctsp&id=<?=$pro_detail_one->pro_id?>";
-                        </script>
+                    <script>
+                        alert("Vui lòng chọn màu sắc");
+                        window.location.href = "?act=ctsp&id=<?=$pro_id?>";
+                    </script>
                     <?php
                     return;
-                } 
+                }
+        
+                // Lấy chi tiết sản phẩm
+                $pro_detail_one = $this->productDetailQuery->infoOneProductDetail_color_size_proID($pro_id, $pro_size, $pro_color);
+        
+                // Kiểm tra số lượng trong kho
+                if ($pro_detail_one->pro_quantity <= $soluong) {
+                    ?>
+                    <script>
+                        alert("Quá số lượng hàng còn trong kho");
+                        window.location.href = "?act=ctsp&id=<?=$pro_detail_one->pro_id?>";
+                    </script>
+                    <?php
+                    return;
+                }
+        
                 $total = $pro_detail_one->pro_price * $soluong;
-                
+        
                 $array_pro = [
-                    'product_dt_id' =>$pro_detail_one->product_dt_id,
-                    'pro_img'=> $pro_detail_one->pro_image,
-                    'pro_color' =>$pro_detail_one->pro_color,
-                    'pro_size' =>$pro_detail_one->pro_size,
-                    'pro_name'=> $pro_detail_one->pro_name,
-                    'pro_price'=> $pro_detail_one->pro_price,
-                    'pro_quantity'=> $pro_detail_one->pro_quantity,
+                    'product_dt_id' => $pro_detail_one->product_dt_id,
+                    'pro_img' => $pro_detail_one->pro_image,
+                    'pro_color' => $pro_detail_one->pro_color,
+                    'pro_size' => $pro_detail_one->pro_size,
+                    'pro_name' => $pro_detail_one->pro_name,
+                    'pro_price' => $pro_detail_one->pro_price,
+                    'pro_quantity' => $pro_detail_one->pro_quantity,
                     'soluong' => $soluong,
-                    'total'=> $total,
+                    'total' => $total,
                 ];
-
+        
+                // Kiểm tra nếu giỏ hàng đã có trong session
                 if (isset($_SESSION["myCart"])) {
-                    
-                    $proInCart = "" ;
+                    $proInCart = "";
+        
+                    // Kiểm tra sản phẩm đã có trong giỏ hàng chưa
                     foreach ($_SESSION["myCart"] as $key => $proCart) {
                         if ($array_pro['product_dt_id'] == $proCart['product_dt_id']) {
                             $proCart['soluong'] += $array_pro['soluong'];
                             $soluongIncart = $proCart['soluong'];
                             $totalProIncart = $soluongIncart * $proCart['pro_price'];
-
+        
+                            // Cập nhật giỏ hàng trong session
                             $array_pro = [
-                                'product_dt_id' =>$pro_detail_one->product_dt_id,
-                                'pro_img'=> $pro_detail_one->pro_image,
-                                'pro_color' =>$pro_detail_one->pro_color,
-                                'pro_size' =>$pro_detail_one->pro_size,
-                                'pro_name'=> $pro_detail_one->pro_name,
-                                'pro_price'=> $pro_detail_one->pro_price,
-                                'pro_quantity'=> $pro_detail_one->pro_quantity,
+                                'product_dt_id' => $pro_detail_one->product_dt_id,
+                                'pro_img' => $pro_detail_one->pro_image,
+                                'pro_color' => $pro_detail_one->pro_color,
+                                'pro_size' => $pro_detail_one->pro_size,
+                                'pro_name' => $pro_detail_one->pro_name,
+                                'pro_price' => $pro_detail_one->pro_price,
+                                'pro_quantity' => $pro_detail_one->pro_quantity,
                                 'soluong' => $soluongIncart,
-                                'total'=> $totalProIncart,
+                                'total' => $totalProIncart,
                             ];
+        
                             $proInCart = 1;
                             $_SESSION["myCart"][$key] = $array_pro;
                         }
-                        // break;
                     }
+        
+                    // Nếu sản phẩm chưa có trong giỏ, thêm mới vào giỏ
                     if ($proInCart !== 1) {
-                        array_push($_SESSION["myCart"],$array_pro);
+                        array_push($_SESSION["myCart"], $array_pro);
                     } else {
-                        array_push($_SESSION["myCart"],$array_pro);
-                        // echo "<pre>";
-                        // print_r($_SESSION["myCart"]);
+                        // Xóa sản phẩm cũ trong giỏ và thêm sản phẩm mới
                         foreach ($_SESSION["myCart"] as $key => $proCart) {
                             if ($array_pro['product_dt_id'] == $proCart['product_dt_id']) {
                                 unset($_SESSION["myCart"][$key]);
                                 break;
                             }
                         }
+                        array_push($_SESSION["myCart"], $array_pro);
                     }
-                } else{
-                    array_push($_SESSION["myCart"],$array_pro);
+                } else {
+                    // Nếu giỏ hàng chưa có, tạo mới
+                    array_push($_SESSION["myCart"], $array_pro);
                 }
-                // echo "<pre>";
-                // print_r($_SESSION['myCart']);
-                $allSlPro = 0;
-                foreach ($_SESSION["myCart"] as $key => $proCart) {
-                    if ($proCart['product_dt_id']) {
-                        $allSlPro++;
-                    }
-                }
-                // print_r($allSlPro);
+        
+                // Lưu giỏ hàng vào cookie
+                setcookie("myCart", json_encode($_SESSION["myCart"]), time() + (86400 * 30), "/"); // Giữ trong 30 ngày
             }
+        
+            // Tính toán tổng số lượng và tổng tiền trong giỏ hàng
             $allSlPro = 0;
             $tongTien = 0;
             foreach ($_SESSION["myCart"] as $key => $proCart) {
@@ -257,8 +270,11 @@
                     $tongTien += $proCart['total'];
                 }
             }
-        include "view/cart.php";
-    }
+        
+            // Hiển thị giỏ hàng
+            include "view/cart.php";
+        }
+        
 
     public function order() {
         if (empty($_SESSION['myCart'])) {
