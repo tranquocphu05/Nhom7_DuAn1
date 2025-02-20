@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="shortcut icon" href="img/logo_darkblue_notfull.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="img/logo_darkblue_notfull.jpg" type="image/x-icon">
     <link rel="stylesheet" href="giaodien/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://kit.fontawesome.com/6dab569175.js" crossorigin="anonymous"></script>

@@ -1,6 +1,6 @@
 <header>
     <div class="logo">
-        <a href="index.php"><img src="img/logo_darkblue_notfull.svg" alt=""></a>
+        <a href="index.php"><img src="img/logo_darkblue_notfull.jpg" alt=""></a>
 
     </div>
     <div class="search">

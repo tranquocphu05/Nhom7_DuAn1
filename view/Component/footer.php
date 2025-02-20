@@ -11,9 +11,9 @@
     </div>
     <div class="belowfoot w95">
         <div class="company">
-            <a href=""><img src="img/logo_darkblue_full.svg" alt=""></a>
+            <a href=""><img src="img/logo_darkblue_notfull.jpg" alt=""></a>
             <strong>Shopstore - INTERIOR HOUSE STORE</strong>
-            <p>Địa chỉ: Tầng 4, Tòa nhà L (L401) - Số 02, đường Trịnh Văn Bô,
+            <p>Địa chỉ: Tầng 4, Tòa nhà L (F402) - Số 02, đường Trịnh Văn Bô,
                 Nam Từ Liêm, Hà Nội (Tòa nhà FPT Polytechnic)
             </p>
             <p>Điện thoại: 1900 1234 - 0123456789</p>
