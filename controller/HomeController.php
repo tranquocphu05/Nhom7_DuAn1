@@ -35,7 +35,7 @@
             $dsProduct = $this->productQuery->getTop16ProductLatest();
             $Arr_price = [];
             $mang_pro_id = [];
-        
+         $allSlPro = 0;
             foreach ($dsProduct as $row) {
                 $arr_min_price = [];
                 $dsProDetail = $this->productDetailQuery->listProductDetail($row->pro_id);
