@@ -52,6 +52,45 @@
     transform: scale(1.1); /* Zoom the button to 110% of its size */
 }
 
+
+.banner_slideshow .slide {
+ 
+    display: none; /* Ẩn các ảnh mặc định */
+}
+
+.banner_slideshow .active {
+    display: block; /* Hiển thị ảnh có class "active" */
+}
+.infinite-scroll {
+    width: 100%;
+    height: 50px; /* Chiều cao của vùng cuộn */
+    overflow: hidden; /* Ẩn các phần tử ngoài vùng này */
+    position: relative;
+    background-color: #f1f1f1;
+}
+
+.scroll-list {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    animation: scroll 10s linear infinite; /* Tạo hiệu ứng cuộn liên tục */
+}
+
+.scroll-list li {
+    padding: 0 20px;
+    line-height: 50px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0); /* Bắt đầu từ vị trí ban đầu */
+    }
+    100% {
+        transform: translateX(-100%); /* Cuộn hết sang bên trái */
+    }
+}
+
 </style>
 <body>
     <?php
@@ -60,15 +99,31 @@
     <!-- End header -->
     <main>
         <div class="banner w95">
-            <div class="banner_slideshow">
-                <img src="img/banner.jpg" alt="">
-            </div>
-            <div class="banner_content">
+        <div class="infinite-scroll">
+    <ul class="scroll-list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
+        <li>Item 7</li>
+        <li>Item 8</li>
+    </ul>
+</div>
+
+        <div class="banner_slideshow">
+    <img src="img/banner1.jpg" alt="Banner 1" class="slide">
+    <img src="img/banner2.jpg" alt="Banner 2" class="slide">
+    <img src="img/banner3.jpg" alt="Banner 3" class="slide">
+</div>
+
+            <!-- <div class="banner_content">
     <h3 class=""><span></span>Giày Tây 2024</h3>
     <h1>Phong cách & Đẳng cấp</h1>
     <p>Giày tây là sự lựa chọn hoàn hảo cho những ai yêu thích sự thanh lịch, sang trọng và lịch lãm. Những thiết kế mới nhất trong năm 2024 hứa hẹn sẽ mang đến cho bạn sự tự tin và phong cách nổi bật, phù hợp với mọi sự kiện và môi trường làm việc.</p>
     <h3><a href="">Mua ngay</a></h3>
-</div>
+</div> -->
         </div>
         <div class="category w95">
             <div class="bigcate">
@@ -273,6 +328,34 @@
     <?php
         include "view/Component/footer.php"
     ?>
+    <script>
+    let slideIndex = 0;
+
+    // Hàm để hiển thị hình ảnh theo index
+    function showSlides() {
+        let slides = document.querySelectorAll('.banner_slideshow .slide');
+        
+        // Ẩn tất cả các hình ảnh
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+
+        // Hiển thị hình ảnh hiện tại
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        slides[slideIndex - 1].classList.add('active');
+        
+        // Chuyển hình ảnh sau mỗi 3 giây
+        setTimeout(showSlides, 3000); // Thay đổi 3000ms (3 giây) nếu bạn muốn thay đổi thời gian
+    }
+
+    // Gọi hàm khi trang tải xong
+    window.onload = function() {
+        showSlides();
+    };
+</script>
+
 </body>
+
 
 </html>
