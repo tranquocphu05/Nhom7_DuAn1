@@ -25,6 +25,7 @@
     main {
         margin-top: 100px;
     }
+
     .div_lg h5 {
         font-size: 16px;
     }
@@ -54,47 +55,6 @@
     .div_lg1 h5 {
         font-size: 16px;
     }
-    .banner_content {
-    color: white; /* Set the text color to white */
-    font-family: Arial, sans-serif; /* Use a clean, modern font */
-    text-align: center; /* Center the text */
-    padding: 20px;
-}
-
-.banner_content h3 {
-    font-size: 2rem; /* Make the h3 text larger */
-    font-weight: bold; /* Make it bold */
-}
-
-.banner_content h1 {
-    font-size: 4rem; /* Make the h1 text very large */
-    font-weight: bold; /* Make it bold */
-    letter-spacing: 2px; /* Add some spacing between the letters for a modern look */
-    text-transform: uppercase; /* Capitalize the text for a more sophisticated style */
-}
-
-.banner_content p {
-    font-size: 1.2rem; /* Set a readable font size */
-    line-height: 1.5; /* Space out the lines for better readability */
-    margin: 15px 0; /* Add some space around the paragraph */
-}
-
-.banner_content h3 a {
-    text-decoration: none; /* Remove underline from link */
-    color: white; /* Keep the link text white */
-    font-size: 1.5rem; /* Make the link text larger */
-    background-color: #f57c00; /* Add an orange background to make the link stand out */
-    padding: 10px 20px; /* Add some padding to the link */
-    border-radius: 5px; /* Round the corners */
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for zoom and background */
-}
-
-/* Hover state for the link with zoom effect */
-.banner_content h3 a:hover {
-    background-color: #e65100; /* Darker orange on hover */
-    transform: scale(1.1); /* Zoom the button to 110% of its size */
-}
-
     </style>
 </head>
 

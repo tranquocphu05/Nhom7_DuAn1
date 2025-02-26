@@ -27,7 +27,16 @@
         <div class="form-container">
             <span class="close-btn">×</span>
             <h2>Đăng Nhập</h2>
-            
+            <div class="via_GF">
+                <button>
+                    <i class="fa-brands fa-google"></i>
+                    <span>Đăng nhập Google</span>
+                </button>
+                <button>
+                    <i class="fa-brands fa-facebook"></i>
+                    <span>Đăng nhập Facebook</span>
+                </button>
+            </div>
             <hr>
             <h6>Hoặc tài khoản</h6>
             <form action="" method="post" class="main-form">

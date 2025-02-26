@@ -7,7 +7,6 @@
         public $quantity;
         public $total;
         public $bill_status;
-        public $payment_status;
         public $date_order;
     }
 ?>

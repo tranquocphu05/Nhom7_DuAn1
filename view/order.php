@@ -29,9 +29,7 @@
                 <h3>Thông tin đặt hàng</h3>
                 <div class="row1_content">
                     <?php
-                        foreach ($array as $pro_Order)  :  ?>
-                        <!-- var_dump $pro_Order;
-                        die; -->
+                        foreach ($array as $pro_Order)  : ?>
                         <div class="proInOrder">
                             <div class="row1_content_img">
                                 <img src="<?=$pro_Order['pro_image']?>" alt="">
