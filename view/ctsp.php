@@ -8,21 +8,55 @@
     <link rel="shortcut icon" href="img/logo_darkblue_notfull.svg" type="image/x-icon">
     <link rel="stylesheet" href="giaodien/home.css">
     <link rel="stylesheet" href="giaodien/chiTietSP.css">
-    <link rel="stylesheet" href="giaodien/comment.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://kit.fontawesome.com/6dab569175.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 </head>
 </head>
+ <style>
+    .box_color label,
+.box_size label {
+    transition: background-color 0.3s, border-color 0.3s; /* Hiệu ứng chuyển màu */
+}
 
+.box_color label:hover,
+.box_size label:hover {
+    background-color: #f0f0f0; /* Màu nền khi di chuột qua */
+}
+
+.box_color input:checked + label,
+.box_size input:checked + label {
+    border-color: #007BFF; /* Màu viền khi được chọn */
+    background-color: #e7f1ff; /* Màu nền khi được chọn */
+    color: #007BFF; /* Màu chữ khi được chọn */
+}
+
+.row2_img {
+    width: 95%; /* Fixed width */
+    height: 90%; /* Fixed height */
+    position: relative;
+    overflow: hidden; /* Prevents image overflow outside the square container */
+}
+
+.row2_img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+    transition: transform 0.3s ease; /* Smooth transition for the zoom effect */
+}
+
+.row2_img img:hover {
+    transform: scale(1.1); /* Light zoom (10% increase) */
+}
+ </style>
 <body>
     <?php include "view/Component/header.php" ?>
-
     <!-- End header -->
-
     <!-- Begin main  -->
-
     <div class="row1">
         <ul>
             <li><a href="index.php">Trang chủ</a></li>
@@ -53,16 +87,14 @@
 
         <div class="row2">
             <div class="row2_img">
-                <img src="img/product/<?= $pro_one->pro_image?>" alt="">
+                <img  src="img/product/<?= $pro_one->pro_image?>" alt="">
             </div>
 
             <div class="pro_inf">
                 <h4><?= $pro_one->pro_name?></h4>
-
                 <!-- <h5 style="color: black; font-size: 20px;">
                     Giá: <span style="color: red;"><?=$price ?></span>
                 </h5> -->
-
                 <?php
                     if ($price < $price_max) { ?>
                         <h5><?=$price ?> - 
@@ -170,7 +202,7 @@
 
                             <div class="buy">
                                 <a href="">
-                                    <button type="submit" name='addToCart'>MUA HÀNG</button>
+                                    <button type="submit" name='addToCart'>Thêm Sản Phẩm Vào Giỏ Hàng</button>
                                 </a>
                             </div>
                         </div>
@@ -235,22 +267,9 @@
             </div>
         </div>
 
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function() {
-                    $("#comment").load("view/form_comment.php", { pro_id: <?= $pro_one->pro_id ?> });
-            });
-        </script> -->
-        <div class="row4">
-            <h3>Bình luận</h3>
-            <div class="pro_description" id="comment">
-                <?php include "view/form_comment.php"; ?>
-            </div>
-        </div>
 
         <div class="hot_products w95">
             <div class="title">Sản phẩm liên quan</div>
-
             <div class="list_pro">
                 <?php
                     // var_dump($dsProduct_same);
