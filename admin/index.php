@@ -9,12 +9,12 @@ session_start();
 //file trong controller
 include "controller/categoryController.php";
 include "controller/productController.php";
-include "controller/newsController.php";
+
 include "controller/accountController.php";
-include "controller/commentController.php";
+
 include "controller/billController.php";
 include "controller/thongKeController.php";
-include "controller/voucherController.php";
+// 
 
 
 //file trong model
@@ -22,18 +22,15 @@ include "model/category.php";
 include "model/categoryQuery.php"; 
 include "model/product.php";
 include "model/productQuery.php";
-include "model/news.php";
-include "model/newsQuery.php";
+
 include "model/account.php";
 include "model/accountQuery.php";
-include "model/comment.php";
-include "model/commentQuery.php";
+
 include "model/bill.php";
 include "model/billQuery.php";
 include "model/thongke.php";
 include "model/thongKeQuery.php";
-include "model/voucher.php";
-include "model/voucherQuery.php";
+
 
 
 // Người dùng hệ thống sẽ tưởng tác với website bằng url thông qua tham số act 
@@ -83,26 +80,13 @@ if ($_SESSION['acc_role'] == 1) {
   
   
   
-      // -----------NEWS--------------------------
-      'list-news' => (new NewsController()) -> list(),
-      'create-news' => (new NewsController()) -> create(),
-      'update-news' => (new NewsController()) -> update(),
-      'delete-news' => (new NewsController()) -> deleteNews(),
   
   
-      // -----------COMMENTS--------------------------
-      'list-comment' => (new CommentController()) -> list(),
-      'view-comment-detail' => (new CommentController()) -> readOneComment(),
-      'delete-comment' => (new CommentController()) -> delete(),
-
+  
       // -----------THỐNG KÊ--------------------------
       'show_thongke' => (new thongKeController()) ->show(),
 
-      // -----------VOUCHERS--------------------------
-      'list-voucher' => (new VoucherController()) -> list(),
-      'create-voucher' => (new VoucherController()) -> create(),
-      'show-one-voucher' => (new VoucherController()) -> update(),
-
+      
     };
 } else {
   header('Location: index.php').'';
